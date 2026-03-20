@@ -22,35 +22,38 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       setSplitText();
       setIsDesktopView(window.innerWidth > 1024);
     };
+
     resizeHandler();
+
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [isDesktopView]);
+  }, []);
 
   return (
     <div className="container-main">
       <Cursor />
       <Navbar />
       <SocialIcons />
+
       {isDesktopView && children}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <div className="container-main">
-            <Landing>{!isDesktopView && children}</Landing>
-            <About />
-            <WhatIDo />
-            <Career />
-            <Work />
-            {isDesktopView && (
-              <Suspense fallback={<div>Loading....</div>}>
-                <TechStack />
-              </Suspense>
-            )}
-            <Contact />
-          </div>
-        </div>
+
+      {/* ❌ Removed smooth-wrapper & smooth-content */}
+      <div className="container-main">
+        <Landing>{!isDesktopView && children}</Landing>
+        <About />
+        <WhatIDo />
+        <Career />
+        <Work />
+
+        {isDesktopView && (
+          <Suspense fallback={<div>Loading....</div>}>
+            <TechStack />
+          </Suspense>
+        )}
+
+        <Contact />
       </div>
     </div>
   );
