@@ -29,19 +29,6 @@ export function initialFX() {
     }
   );
 
-  // 🔥 Secondary text
-  gsap.fromTo(
-    ".landing-h2-info",
-    { opacity: 0, y: 80, filter: "blur(5px)" },
-    {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      duration: 1.2,
-      ease: "power3.inOut",
-      delay: 0.5,
-    }
-  );
 
   // 🔥 Info text
   gsap.fromTo(
